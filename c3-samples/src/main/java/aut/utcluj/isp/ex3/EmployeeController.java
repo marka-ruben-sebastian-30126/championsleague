@@ -1,18 +1,26 @@
 package aut.utcluj.isp.ex3;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author stefan
  */
 public class EmployeeController {
+    private List<Employee> employeeList = new ArrayList<Employee>();
     /**
      * Add new employee to the list of employees
      *
      * @param employee - employee information
      */
-    public void addEmployee(final Employee employee) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void addEmployee(final Employee employee){
+        if(this.employeeList.contains(employee)){
+            System.out.println("Employee already exists!");
+        }
+        else
+        {
+            this.employeeList.add(employee);
+        }
     }
 
     /**
@@ -22,7 +30,13 @@ public class EmployeeController {
      * @return found employee or null if not found
      */
     public Employee getEmployeeByCnp(final String cnp) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        for(Employee e : this.employeeList){
+            if(cnp.equals(e.getCnp())){
+                return e;
+            }
+
+        }
+        return null;
     }
 
     /**
@@ -33,7 +47,13 @@ public class EmployeeController {
      * @return updated employee
      */
     public Employee updateEmployeeSalaryByCnp(final String cnp, final Double salary) {
-        throw new UnsupportedOperationException("Not supported yet.");
+      for(Employee e : this.employeeList){
+          if(cnp.equals(e.getCnp())){
+              e.setSalary(salary);
+              return e;
+          }
+      }
+      return null;
     }
 
     /**
@@ -43,7 +63,16 @@ public class EmployeeController {
      * @return deleted employee or null if not found
      */
     public Employee deleteEmployeeByCnp(final String cnp) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Employee employee=new Employee();
+        employee=null;
+        for(Employee e : this.employeeList)
+        {
+            if(cnp.equals(e.getCnp())){
+                employee=e;
+                this.employeeList.remove(e);
+            }
+        }
+        return employee;
     }
 
     /**
@@ -52,7 +81,7 @@ public class EmployeeController {
      * @return current list of employees
      */
     public List<Employee> getEmployees() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.employeeList;
     }
 
     /**
@@ -61,6 +90,6 @@ public class EmployeeController {
      * @return - number of registered employees
      */
     public int getNumberOfEmployees() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.employeeList.size();
     }
 }
