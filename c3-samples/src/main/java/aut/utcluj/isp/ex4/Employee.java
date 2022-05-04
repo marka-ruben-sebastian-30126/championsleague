@@ -3,14 +3,22 @@ package aut.utcluj.isp.ex4;
 /**
  * @author stefan
  */
-public class Employee {
+public class Employee implements IdentityManager {
     private String firstName;
     private String lastName;
     private String cnp;
     private SalaryInfo employeeSalaryInfo;
 
     public Employee(String firstName, String lastName, String cnp, Double monthlyRevenue) {
-        throw new UnsupportedOperationException("Not supported yet.");
+
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.cnp = cnp;
+        try {
+            this.employeeSalaryInfo = new SalaryInfo(monthlyRevenue);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public String getFirstName() {
@@ -29,7 +37,7 @@ public class Employee {
      * Add salary to the employee
      */
     public void addSalary() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.employeeSalaryInfo.addSalary();
     }
 
     /**
@@ -39,7 +47,11 @@ public class Employee {
      * @param money - money to be added
      */
     public void addMoney(final Double money) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try {
+            this.employeeSalaryInfo.addMoney(money);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -48,7 +60,11 @@ public class Employee {
      * @param tax - tax to be paid
      */
     public void payTax(final Double tax) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try {
+            this.employeeSalaryInfo.payTax(tax);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -57,6 +73,21 @@ public class Employee {
      * @return salary info
      */
     public SalaryInfo getSalaryInfo() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.employeeSalaryInfo;
     }
+
+    @Override
+    public String getIdentity() {
+        return this.firstName + "_" + this.lastName + "_" + this.cnp;
+    }
+    
+      public static void main(String[] args)
+  {
+     EmployeeControllerrJFrame j1 = new EmployeeControllerrJFrame("Jhonny","Bravo","123456321",123.00);
+     j1.setVisible(true);
+     
+     EmployeeControllerrJFrame j2 = new EmployeeControllerrJFrame("Soyey","Lamue","123456321",123.00);
+     j2.setVisible(true);
+   }
+   
 }
