@@ -10,8 +10,15 @@ public class Employee {
     private String cnp;
 
     public Employee(String firstName, String lastName, Double salary, String cnp) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.cnp=cnp;
+        this.salary=salary;
+        this.firstName=firstName;
+        this.lastName=lastName;
     }
+public Employee(){
+
+
+}
 
     public String getFirstName() {
         return firstName;
@@ -28,4 +35,25 @@ public class Employee {
     public String getCnp() {
         return cnp;
     }
+<<<<<<< HEAD
 }
+=======
+
+    public void setFirstName(String firstName) {
+
+        this.firstName = firstName;
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setCnp(String cnp) {
+        this.cnp = cnp;
+    }
+}
+>>>>>>> 7389fa48187c09ed0fc714cbc0a1cd0497f5d70b
