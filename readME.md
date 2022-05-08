@@ -9,3 +9,9 @@ Lunca Andrei
 
 Sample:
 C3
+
+Class Diagram
+![Class Diagram](docs/ClassDiagram.jpg)
+
+Use Case Diagram
+![Use Case Diagram](docs/UseCaseDiagram.jpg)
